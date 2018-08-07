@@ -17,6 +17,7 @@ import com.byamada.cursomc.domain.enums.TipoCliente;
 import com.byamada.cursomc.repositories.CategoriaRepository;
 import com.byamada.cursomc.repositories.CidadeRepository;
 import com.byamada.cursomc.repositories.ClienteRepository;
+import com.byamada.cursomc.repositories.EnderecoRepository;
 import com.byamada.cursomc.repositories.EstadoRepository;
 import com.byamada.cursomc.repositories.ProdutoRepository;
 
@@ -38,6 +39,9 @@ public class CursomcApplication implements CommandLineRunner{
 	
 	@Autowired
 	private ClienteRepository clienteRepository;
+	
+	@Autowired
+	private EnderecoRepository enderecoRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CursomcApplication.class, args);
@@ -85,8 +89,8 @@ public class CursomcApplication implements CommandLineRunner{
 		
 		cli1.getEnderecos().addAll(Arrays.asList(e1,e2));
 		
-		clienteRepository.save(cli1);
-		
+		clienteRepository.saveAll(Arrays.asList(cli1));
+		enderecoRepository.saveAll(Arrays.asList(e1,e2));
 		
 	}
 }
